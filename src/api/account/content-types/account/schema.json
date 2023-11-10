@@ -1,0 +1,70 @@
+{
+  "kind": "collectionType",
+  "collectionName": "accounts",
+  "info": {
+    "singularName": "account",
+    "pluralName": "accounts",
+    "displayName": "Accounts",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "default": "inactive",
+      "enumName": "inactive",
+      "required": true,
+      "private": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "password": {
+      "type": "password",
+      "required": true
+    },
+    "points": {
+      "type": "integer"
+    },
+    "Orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "account"
+    },
+    "account_role": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::account-role.account-role",
+      "inversedBy": "accounts"
+    },
+    "kpi": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::kpi.kpi",
+      "inversedBy": "accounts"
+    },
+    "carts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::cart.cart",
+      "mappedBy": "account"
+    }
+  }
+}

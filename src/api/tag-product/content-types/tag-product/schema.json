@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tag_products",
+  "info": {
+    "singularName": "tag-product",
+    "pluralName": "tag-products",
+    "displayName": "Tag Products",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tag": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tag.tag",
+      "inversedBy": "tag_products"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "tag_products"
+    }
+  }
+}
