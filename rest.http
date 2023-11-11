@@ -1,2 +1,20 @@
-GET http://localhost:1337/api/accounts
+POST  http://localhost:1337/api/accounts
+
+
+###
+GET  http://localhost:1337/api/accounts
+
+
+###
+GET  http://localhost:1337/api/accounts/:5
+
+###
+PUT  http://localhost:1337/api/accounts/:2
+
+
+
+###
+DELETE http://localhost:1337/api/accounts/:id
+
+
 

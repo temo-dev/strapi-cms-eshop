@@ -8,126 +8,59 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "pluginOptions": {},
       "type": "string",
       "required": true
     },
     "description": {
-      "pluginOptions": {},
-      "type": "text"
+      "type": "text",
+      "required": false
     },
-    "code": {
-      "pluginOptions": {},
+    "slug": {
       "type": "string",
-      "required": true,
-      "regex": "^(0|[1-9][0-9]*)$"
-    },
-    "ean": {
-      "pluginOptions": {},
-      "type": "string",
-      "regex": "^(0|[1-9][0-9]*)$",
       "required": true
-    },
-    "manufacturer": {
-      "pluginOptions": {},
-      "type": "string",
-      "required": false
-    },
-    "packaging": {
-      "pluginOptions": {},
-      "type": "integer",
-      "default": 5,
-      "min": 1
-    },
-    "layer": {
-      "pluginOptions": {},
-      "type": "integer",
-      "default": 10,
-      "min": 10
-    },
-    "pallette": {
-      "pluginOptions": {},
-      "type": "integer",
-      "min": 1,
-      "default": 10
-    },
-    "unit_price": {
-      "pluginOptions": {},
-      "type": "float",
-      "default": 0,
-      "required": true,
-      "min": 0
-    },
-    "vat": {
-      "pluginOptions": {},
-      "type": "integer",
-      "default": 21,
-      "required": false
-    },
-    "data": {
-      "pluginOptions": {},
-      "type": "json"
-    },
-    "amount": {
-      "pluginOptions": {},
-      "type": "integer"
     },
     "image": {
-      "pluginOptions": {},
-      "type": "text",
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "price": {
+      "type": "float",
       "required": true
     },
-    "origin_country": {
-      "pluginOptions": {},
-      "type": "customField",
-      "customField": "plugin::country-select.country"
+    "sale_price": {
+      "type": "float"
     },
-    "order_products": {
+    "variations": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::order-product.order-product",
+      "target": "api::variation.variation",
       "mappedBy": "product"
     },
-    "sub_category": {
+    "category": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::sub-category.sub-category",
+      "target": "api::category.category",
       "inversedBy": "products"
-    },
-    "sale_products": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::sale-product.sale-product",
-      "mappedBy": "product"
-    },
-    "favorites": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::favorite.favorite",
-      "mappedBy": "product"
-    },
-    "cart_products": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::cart-product.cart-product",
-      "mappedBy": "product"
-    },
-    "advertiser_products": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::advertiser-product.advertiser-product",
-      "mappedBy": "product"
-    },
-    "tag_products": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tag-product.tag-product",
-      "mappedBy": "product"
     }
   }
 }
