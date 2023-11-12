@@ -683,6 +683,7 @@ export interface ApiAttributeAttribute extends Schema.CollectionType {
     singularName: 'attribute';
     pluralName: 'attributes';
     displayName: 'Attributes';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -690,6 +691,11 @@ export interface ApiAttributeAttribute extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required;
     slug: Attribute.String & Attribute.Required;
+    variations: Attribute.Relation<
+      'api::attribute.attribute',
+      'oneToMany',
+      'api::variation.variation'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -843,16 +849,16 @@ export interface ApiVariationVariation extends Schema.CollectionType {
   };
   attributes: {
     value: Attribute.String & Attribute.Required;
-    attribute: Attribute.Relation<
-      'api::variation.variation',
-      'oneToOne',
-      'api::attribute.attribute'
-    >;
     meta: Attribute.String;
     product: Attribute.Relation<
       'api::variation.variation',
       'manyToOne',
       'api::product.product'
+    >;
+    attribute: Attribute.Relation<
+      'api::variation.variation',
+      'manyToOne',
+      'api::attribute.attribute'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

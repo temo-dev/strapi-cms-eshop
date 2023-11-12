@@ -16,11 +16,6 @@
       "type": "string",
       "required": true
     },
-    "attribute": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::attribute.attribute"
-    },
     "meta": {
       "type": "string"
     },
@@ -28,6 +23,12 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::product.product",
+      "inversedBy": "variations"
+    },
+    "attribute": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::attribute.attribute",
       "inversedBy": "variations"
     }
   }
