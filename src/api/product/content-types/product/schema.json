@@ -67,6 +67,15 @@
       "relation": "manyToOne",
       "target": "api::sale.sale",
       "inversedBy": "products"
+    },
+    "sku": {
+      "type": "string"
+    },
+    "meta": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::meta.meta",
+      "mappedBy": "product"
     }
   }
 }

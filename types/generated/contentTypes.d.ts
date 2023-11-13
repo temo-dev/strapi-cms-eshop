@@ -750,6 +750,54 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiMetaMeta extends Schema.CollectionType {
+  collectionName: 'metas';
+  info: {
+    singularName: 'meta';
+    pluralName: 'metas';
+    displayName: 'Meta';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    content: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    product: Attribute.Relation<
+      'api::meta.meta',
+      'manyToOne',
+      'api::product.product'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::meta.meta', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::meta.meta', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::meta.meta',
+      'oneToMany',
+      'api::meta.meta'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiProductProduct extends Schema.CollectionType {
   collectionName: 'products';
   info: {
@@ -783,6 +831,12 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'api::product.product',
       'manyToOne',
       'api::sale.sale'
+    >;
+    sku: Attribute.String;
+    meta: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::meta.meta'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -895,6 +949,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::attribute.attribute': ApiAttributeAttribute;
       'api::category.category': ApiCategoryCategory;
+      'api::meta.meta': ApiMetaMeta;
       'api::product.product': ApiProductProduct;
       'api::sale.sale': ApiSaleSale;
       'api::variation.variation': ApiVariationVariation;
