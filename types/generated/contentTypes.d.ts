@@ -839,6 +839,8 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'oneToMany',
       'api::meta.meta'
     >;
+    isBestSeller: Attribute.Boolean & Attribute.DefaultTo<false>;
+    isNew: Attribute.Boolean & Attribute.DefaultTo<true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

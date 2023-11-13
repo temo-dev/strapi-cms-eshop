@@ -76,6 +76,15 @@
       "relation": "oneToMany",
       "target": "api::meta.meta",
       "mappedBy": "product"
+    },
+    "isBestSeller": {
+      "type": "boolean",
+      "default": false,
+      "required": false
+    },
+    "isNew": {
+      "type": "boolean",
+      "default": true
     }
   }
 }
