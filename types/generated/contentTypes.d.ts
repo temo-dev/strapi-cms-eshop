@@ -756,6 +756,7 @@ export interface ApiMetaMeta extends Schema.CollectionType {
     singularName: 'meta';
     pluralName: 'metas';
     displayName: 'Meta';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -778,9 +779,9 @@ export interface ApiMetaMeta extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    product: Attribute.Relation<
+    products: Attribute.Relation<
       'api::meta.meta',
-      'manyToOne',
+      'manyToMany',
       'api::product.product'
     >;
     createdAt: Attribute.DateTime;
@@ -835,7 +836,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     sku: Attribute.String;
     meta: Attribute.Relation<
       'api::product.product',
-      'oneToMany',
+      'manyToMany',
       'api::meta.meta'
     >;
     createdAt: Attribute.DateTime;

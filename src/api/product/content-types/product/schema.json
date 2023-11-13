@@ -73,9 +73,9 @@
     },
     "meta": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::meta.meta",
-      "mappedBy": "product"
+      "mappedBy": "products"
     }
   }
 }

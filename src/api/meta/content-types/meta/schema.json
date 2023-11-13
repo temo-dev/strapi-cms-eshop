@@ -4,7 +4,8 @@
   "info": {
     "singularName": "meta",
     "pluralName": "metas",
-    "displayName": "Meta"
+    "displayName": "Meta",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -31,9 +32,9 @@
       },
       "type": "text"
     },
-    "product": {
+    "products": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::product.product",
       "inversedBy": "meta"
     }
