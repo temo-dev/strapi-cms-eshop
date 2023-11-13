@@ -779,9 +779,9 @@ export interface ApiMetaMeta extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    products: Attribute.Relation<
+    product: Attribute.Relation<
       'api::meta.meta',
-      'manyToMany',
+      'manyToOne',
       'api::product.product'
     >;
     createdAt: Attribute.DateTime;
@@ -836,7 +836,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     sku: Attribute.String;
     meta: Attribute.Relation<
       'api::product.product',
-      'manyToMany',
+      'oneToMany',
       'api::meta.meta'
     >;
     createdAt: Attribute.DateTime;
