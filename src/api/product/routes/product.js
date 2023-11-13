@@ -30,7 +30,7 @@ module.exports = {
     },
     {
       method: 'GET',
-      path: "/product",
+      path: "/products",
       handler: "product.findOne",
       config: {
         policies: [],
@@ -39,7 +39,7 @@ module.exports = {
     },
     {
       method: 'PUT',
-      path: "/product",
+      path: "/products",
       handler: "product.update",
       config: {
         policies: [],
@@ -48,7 +48,7 @@ module.exports = {
     }
     , {
       method: 'DELETE',
-      path: "/product",
+      path: "/products",
       handler: "product.delete",
       config: {
         policies: [],
