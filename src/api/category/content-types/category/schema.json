@@ -33,6 +33,10 @@
       "relation": "oneToMany",
       "target": "api::product.product",
       "mappedBy": "category"
+    },
+    "isHot": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

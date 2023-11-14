@@ -85,6 +85,10 @@
     "isNew": {
       "type": "boolean",
       "default": true
+    },
+    "isHot": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

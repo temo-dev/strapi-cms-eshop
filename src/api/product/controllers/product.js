@@ -50,12 +50,35 @@ module.exports = createCoreController('api::product.product', ({ strapi }) => ({
   },
 
 
-  // ===== find new product ======
+  // ===== find Best Seller ======
   async findBestSellerProducts(ctx) {
     try {
       const data = await strapi.db.query('api::product.product').findMany({
         where: {
           isBestSeller: true
+        },
+        populate: {
+          variations: {
+            populate: true
+          },
+          image: true
+        }
+      })
+      if (data.length > 0) {
+        return ctx.body = data
+      }
+      return ctx.body = "The product is empty"
+    } catch (error) {
+      return ctx.body = error
+    }
+  },
+
+  // ===== find Best Seller ======
+  async findHotProducts(ctx) {
+    try {
+      const data = await strapi.db.query('api::product.product').findMany({
+        where: {
+          isHot: true
         },
         populate: {
           variations: {

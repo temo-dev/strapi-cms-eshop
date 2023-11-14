@@ -733,6 +733,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'oneToMany',
       'api::product.product'
     >;
+    isHot: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -841,6 +842,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     >;
     isBestSeller: Attribute.Boolean & Attribute.DefaultTo<false>;
     isNew: Attribute.Boolean & Attribute.DefaultTo<true>;
+    isHot: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
