@@ -21,6 +21,15 @@ module.exports = {
     },
     {
       method: 'GET',
+      path: "/products-isHot",
+      handler: "product.findHotProducts",
+      config: {
+        policies: [],
+        middlewares: []
+      }
+    },
+    {
+      method: 'GET',
       path: "/products-isBestSeller",
       handler: "product.findBestSellerProducts",
       config: {
