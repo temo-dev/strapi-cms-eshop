@@ -7,6 +7,7 @@
 const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('api::product.product', ({ strapi }) => ({
+  // ===== find product by slug ======
   async findBySlug(ctx) {
     try {
       const slug = ctx.query.slug
@@ -15,13 +16,60 @@ module.exports = createCoreController('api::product.product', ({ strapi }) => ({
         filters: { slug: slug },
       })
       if (data.length === 1) {
-        ctx.body = data[0]
+        return ctx.body = data[0]
       } else {
-        ctx.body = "The product has many than one"
+        return ctx.body = "The product has many than one"
       }
 
     } catch (error) {
-      ctx.body = error
+      return ctx.body = error
+    }
+  },
+
+  // ===== find new product ======
+  async findNewProducts(ctx) {
+    try {
+      const data = await strapi.db.query('api::product.product').findMany({
+        where: {
+          isNew: true
+        },
+        populate: {
+          variations: {
+            populate: true
+          },
+          image: true
+        }
+      })
+      if (data.length > 0) {
+        return ctx.body = data
+      }
+      return ctx.body = "The product is empty"
+    } catch (error) {
+      return ctx.body = error
+    }
+  },
+
+
+  // ===== find new product ======
+  async findBestSellerProducts(ctx) {
+    try {
+      const data = await strapi.db.query('api::product.product').findMany({
+        where: {
+          isBestSeller: true
+        },
+        populate: {
+          variations: {
+            populate: true
+          },
+          image: true
+        }
+      })
+      if (data.length > 0) {
+        return ctx.body = data
+      }
+      return ctx.body = "The product is empty"
+    } catch (error) {
+      return ctx.body = error
     }
   }
 }));

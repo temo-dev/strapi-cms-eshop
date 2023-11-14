@@ -12,6 +12,24 @@ module.exports = {
   routes: [
     {
       method: 'GET',
+      path: "/products-isNew",
+      handler: "product.findNewProducts",
+      config: {
+        policies: [],
+        middlewares: []
+      }
+    },
+    {
+      method: 'GET',
+      path: "/products-isBestSeller",
+      handler: "product.findBestSellerProducts",
+      config: {
+        policies: [],
+        middlewares: []
+      }
+    },
+    {
+      method: 'GET',
       path: "/products-slug",
       handler: "product.findBySlug",
       config: {
