@@ -1,21 +1,26 @@
 module.exports = ({ env }) => ({
   upload: {
     config: {
-      provider: 'strapi-provider-upload-supabase',
+      provider: 'aws-s3',
       providerOptions: {
-        apiUrl: env('SUPABASE_API_URL'),
-        apiKey: env('SUPABASE_API_KEY'),
-        bucket: env('SUPABASE_BUCKET'),
-        directory: env('SUPABASE_DIRECTORY'),
-        options: {}
+        s3Options: {
+          accessKeyId: env('AWS_ACCESS_KEY_ID'),
+          secretAccessKey: env('AWS_ACCESS_SECRET'),
+          region: env('AWS_REGION'),
+          params: {
+            Bucket: env('AWS_BUCKET_NAME'),
+          },
+        }
       },
-      // breakpoints: {
-      //   xlarge: 1920,
-      //   large: 1000,
-      //   medium: 750,
-      //   small: 500,
-      //   xsmall: 64,
-      // },
+      // These parameters could solve issues with ACL public-read access — see [this issue](https://github.com/strapi/strapi/issues/5868) for details
+      actionOptions: {
+        upload: {
+          ACL: null
+        },
+        uploadStream: {
+          ACL: null
+        },
+      }
     },
   },
   'strapi-plugin-populate-deep': {
